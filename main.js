@@ -96,5 +96,15 @@ let formData = [
 
 
 // -------- Your Code Goes Below this Line --------
-
-
+let dataField = document.getElementById("fields");
+for (let i = 0; i < formData.length; i++) {
+  let newInput = document.createElement("input");
+  newInput.setAttribute("type", formData[i].type);
+  newInput.setAttribute("label", formData[i].label);
+  newInput.setAttribute("id", formData[i].id);
+  for (let j = 0; j < formData.options.length; j++) {
+    
+  }
+  dataField.appendChild(newInput);
+  console.log(newInput);
+}
