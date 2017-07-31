@@ -8,28 +8,36 @@ let formData = [
     "label": "First Name",
     "id": "user-first-name",
     "icon": "fa-user",
-    "options": []
+    "options": [
+      {"placeholder": "First Name"}
+    ]
   },
   {
     "type": "text",
     "label": "Last Name",
     "id": "user-last-name",
     "icon": "fa-user",
-    "options": []
+    "options": [
+      {"placeholder": "Last Name"}
+    ]
   },
   {
     "type": "email",
     "label": "Email Address",
     "id": "user-email",
     "icon": "fa-envelope",
-    "options": []
+    "options": [
+      {"placeholder": "Email"}
+    ]
   },
   {
     "type": "text",
     "label": "Current Website URL",
     "id": "user-website",
     "icon": "fa-globe",
-    "options": []
+    "options": [
+      {"placeholder": "Current website URL"}
+    ]
   },
   {
     "type": "select",
@@ -71,14 +79,18 @@ let formData = [
     "label": "Mobile Number",
     "id": "user-mobile",
     "icon": "fa-mobile-phone",
-    "options": []
+    "options": [
+      {"placeholder": "Mobile Number"}
+    ]
   },
   {
     "type": "tel",
     "label": "Home Number",
     "id": "user-phone",
     "icon": "fa-phone",
-    "options": []
+    "options": [
+      {"placeholder": "Home Number"}
+    ]
   }
 ];
 
@@ -102,9 +114,9 @@ for (let i = 0; i < formData.length; i++) {
   newInput.setAttribute("type", formData[i].type);
   newInput.setAttribute("label", formData[i].label);
   newInput.setAttribute("id", formData[i].id);
-  for (let j = 0; j < formData.options.length; j++) {
-    
-  }
+  // for (let j = 0; j < formData.options.length; j++) {
+  //   newInput.setAttribute();
+  // }
   dataField.appendChild(newInput);
   console.log(newInput);
 }
