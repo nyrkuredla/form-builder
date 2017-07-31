@@ -8,36 +8,28 @@ let formData = [
     "label": "First Name",
     "id": "user-first-name",
     "icon": "fa-user",
-    "options": [
-      {"placeholder": "First Name"}
-    ]
+    "options": []
   },
   {
     "type": "text",
     "label": "Last Name",
     "id": "user-last-name",
     "icon": "fa-user",
-    "options": [
-      {"placeholder": "Last Name"}
-    ]
+    "options": []
   },
   {
     "type": "email",
     "label": "Email Address",
     "id": "user-email",
     "icon": "fa-envelope",
-    "options": [
-      {"placeholder": "Email"}
-    ]
+    "options": []
   },
   {
     "type": "text",
     "label": "Current Website URL",
     "id": "user-website",
     "icon": "fa-globe",
-    "options": [
-      {"placeholder": "Current website URL"}
-    ]
+    "options": []
   },
   {
     "type": "select",
@@ -72,25 +64,24 @@ let formData = [
     "label": "Your Comment",
     "id": "user-comment",
     "icon": "fa-comments",
-    "options": []
+    "options": [
+      {"cols" : 45},
+      {"rows" : 10}
+    ]
   },
   {
     "type": "tel",
     "label": "Mobile Number",
     "id": "user-mobile",
     "icon": "fa-mobile-phone",
-    "options": [
-      {"placeholder": "Mobile Number"}
-    ]
+    "options": []
   },
   {
     "type": "tel",
     "label": "Home Number",
     "id": "user-phone",
     "icon": "fa-phone",
-    "options": [
-      {"placeholder": "Home Number"}
-    ]
+    "options": []
   }
 ];
 
@@ -108,15 +99,33 @@ let formData = [
 
 
 // -------- Your Code Goes Below this Line --------
+// defining data field location from HTML
 let dataField = document.getElementById("fields");
+
+// creating inputs for each object in formData array and setting attributes from array
 for (let i = 0; i < formData.length; i++) {
   let newInput = document.createElement("input");
   newInput.setAttribute("type", formData[i].type);
   newInput.setAttribute("label", formData[i].label);
   newInput.setAttribute("id", formData[i].id);
-  // for (let j = 0; j < formData.options.length; j++) {
-  //   newInput.setAttribute();
-  // }
-  dataField.appendChild(newInput);
+  newInput.setAttribute("placeholder", formData[i].label);
+
+// iterating over select input array to create options
+  if (formData[i].type === "select") {
+    newInput = document.createElement("select");
+    let selectPlaceholder = document.createElement("option");
+    selectPlaceholder.setAttribute("label", "Select language...");
+    selectPlaceholder.classList.add(":checked");
+    newInput.appendChild(selectPlaceholder);
+    for (let j = 0; j < formData[i].options.length; j++) {
+      let newChoice = document.createElement("option");
+      newChoice.setAttribute("label", formData[i].options[j].label);
+      newChoice.setAttribute("value", formData[i].options[j].value);
+      newInput.appendChild(newChoice);
+    }
+
+  }
   console.log(newInput);
+  // adding new inputs to data field
+  dataField.appendChild(newInput);
 }
