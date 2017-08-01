@@ -99,9 +99,13 @@ let formData = [
 // defining data field location from HTML
 let dataField = document.getElementById("fields");
 
-// creating inputs and labels for each object in formData array and setting attributes from array
+// iterating over form data array to create new divs, inputs and forms
 for (let i = 0; i < formData.length; i++) {
+
+  // creating new div to put label and input in
   let newDiv = document.createElement("div");
+
+  // creating new labels and inputs and assigning attributes from form data array
   let newLabel = document.createElement("label");
   newLabel.setAttribute("for", formData[i].label);
   let newInput = document.createElement("input");
@@ -109,7 +113,7 @@ for (let i = 0; i < formData.length; i++) {
   newInput.setAttribute("id", formData[i].id);
   newInput.setAttribute("placeholder", formData[i].label);
 
-// iterating over select input array to create options
+// exception for creating select input type
   if (formData[i].type === "select") {
     newInput = document.createElement("select");
 
@@ -119,7 +123,7 @@ for (let i = 0; i < formData.length; i++) {
     selectPlaceholder.classList.add(":checked");
     newInput.appendChild(selectPlaceholder);
 
-    // create language options from input array
+    // create language options from input array and append them to select menu
     for (let j = 0; j < formData[i].options.length; j++) {
       let newChoice = document.createElement("option");
       newChoice.setAttribute("label", formData[i].options[j].label);
@@ -127,6 +131,7 @@ for (let i = 0; i < formData.length; i++) {
       newInput.appendChild(newChoice);
     }
   }
+  // exception for creating textarea input type
   else if
     (formData[i].type === "textarea") {
       newInput = document.createElement("textarea");
@@ -139,6 +144,7 @@ for (let i = 0; i < formData.length; i++) {
   // adding inputs and labels to divs
    newDiv.appendChild(newInput);
    newDiv.appendChild(newLabel);
+   
   // adding new divs to data field
   dataField.appendChild(newDiv);
 }
