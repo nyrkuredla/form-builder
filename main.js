@@ -64,10 +64,7 @@ let formData = [
     "label": "Your Comment",
     "id": "user-comment",
     "icon": "fa-comments",
-    "options": [
-      {"cols" : 45},
-      {"rows" : 10}
-    ]
+    "options": []
   },
   {
     "type": "tel",
@@ -113,19 +110,31 @@ for (let i = 0; i < formData.length; i++) {
 // iterating over select input array to create options
   if (formData[i].type === "select") {
     newInput = document.createElement("select");
+
+    // create a placeholder option and mark it selected
     let selectPlaceholder = document.createElement("option");
     selectPlaceholder.setAttribute("label", "Select language...");
     selectPlaceholder.classList.add(":checked");
     newInput.appendChild(selectPlaceholder);
+
+    // create language options from input array
     for (let j = 0; j < formData[i].options.length; j++) {
       let newChoice = document.createElement("option");
       newChoice.setAttribute("label", formData[i].options[j].label);
       newChoice.setAttribute("value", formData[i].options[j].value);
       newInput.appendChild(newChoice);
     }
-
   }
-  console.log(newInput);
+  else if
+    (formData[i].type === "textarea") {
+      newInput = document.createElement("textarea");
+      newInput.setAttribute("label", formData[i].label);
+      newInput.setAttribute("id", formData[i].id);
+      newInput.setAttribute("placeholder", formData[i].label);
+    }
+
+
+
   // adding new inputs to data field
   dataField.appendChild(newInput);
 }
