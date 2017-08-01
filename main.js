@@ -99,11 +99,13 @@ let formData = [
 // defining data field location from HTML
 let dataField = document.getElementById("fields");
 
-// creating inputs for each object in formData array and setting attributes from array
+// creating inputs and labels for each object in formData array and setting attributes from array
 for (let i = 0; i < formData.length; i++) {
+  let newDiv = document.createElement("div");
+  let newLabel = document.createElement("label");
+  newLabel.setAttribute("for", formData[i].label);
   let newInput = document.createElement("input");
   newInput.setAttribute("type", formData[i].type);
-  newInput.setAttribute("label", formData[i].label);
   newInput.setAttribute("id", formData[i].id);
   newInput.setAttribute("placeholder", formData[i].label);
 
@@ -134,7 +136,9 @@ for (let i = 0; i < formData.length; i++) {
     }
 
 
-
-  // adding new inputs to data field
-  dataField.appendChild(newInput);
+  // adding inputs and labels to divs
+   newDiv.appendChild(newInput);
+   newDiv.appendChild(newLabel);
+  // adding new divs to data field
+  dataField.appendChild(newDiv);
 }
